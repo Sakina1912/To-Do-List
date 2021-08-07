@@ -55,6 +55,20 @@ $white:#fff;
                     letter-spacing: 2px;
                     padding: 10px auto;
                     margin: 10px;
+                    input{
+                        border: 0;
+                        padding: 10px 15px;
+                        font-size: 20px;
+                    }
+                    button{
+                        background-color: transparent;
+                        color: $white;
+                        border: 0;
+                        font-size: 20px;
+                    }
+                    button:active{
+                        transform: scale(0.98);
+                    }
                     .fa-trash-alt{
                         color: rgb(241, 71, 71);
                         display: flex;

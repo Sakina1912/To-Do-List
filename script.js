@@ -24,9 +24,25 @@ function removeTask(elm){
 function addingTaskToDOM(elm){
     let list = document.createElement('li')
     list.classList.add('task')
-    list.innerHTML=`${elm.task} <i class="fas fa-trash-alt" onclick='removeTask(${elm.id})'></i>`
+    list.innerHTML=`<input type="text" value="${elm.task}" id ="${elm.id}" disabled = "disabled">
+     <button onclick='editTask(${elm.id})'>Edit</button> 
+     <i class="fas fa-trash-alt" onclick='removeTask(${elm.id})'></i>`
     taskContainer.appendChild(list)
 }
+
+
+function editTask(elm){
+    let liInput = document.getElementById(elm)
+    if(liInput.hasAttribute('disabled')){
+        liInput.removeAttribute('disabled')
+    }else{
+        liInput.setAttribute("disabled", "disabled")
+    }
+    let editIndex = taskList.findIndex(item => item.id === elm)
+    taskList[editIndex].task = liInput.value
+    updateLocalStorage()
+}
+
 
 function updateLocalStorage(){
     localStorage.setItem('taskList',JSON.stringify(taskList))
